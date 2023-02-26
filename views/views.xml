@@ -1,0 +1,210 @@
+<odoo>
+  <data>
+
+    <!--Vista de equipo-->
+    <record model="ir.ui.view" id="nba.equipo_list_view">
+        <field name="name">nba.equipo.view.tree</field>
+        <field name="model">nba.equipo</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="nombre"/>
+                <field name="ciudad"/>
+                <field name="division"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- search -->
+    <record model="ir.ui.view" id="nba.equipo_search_view">
+        <field name="name">nba.equipo.view.search</field>
+        <field name="model">nba.equipo</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="nombre"/>
+                <field name="ciudad"/>
+                <field name="division"/>
+                <group>
+                    <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- form -->
+    <record model="ir.ui.view" id="nba.equipo_form_view">
+      <field name="name">nba.equipo.view.form</field>
+      <field name="model">nba.equipo</field>
+      <field name="arch" type="xml">
+        <form string="Información equipo">
+          <sheet>
+            <div class="oe_title">
+              <h2>
+                Codigo <field name="name" placeholder="Codigo equipo"/>
+              </h2>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="nombre" placeholder="nombre del equipo"/>
+                <field name="ciudad" placeholder="ciudad a la que pertenece"/>
+                <field name="division" placeholder="division en la que juega"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Definición de menús-->
+    <record model="ir.actions.act_window" id="nba.equipo_action_window">
+      <field name="name">equipos</field>
+      <field name="res_model">nba.equipo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="nba" id="nba.menu_root"/>
+    <menuitem name="equipos" id="nba.menu_equipo" parent="nba.menu_root"/>
+    <menuitem name="List" id="nba.menu_equipo_list" parent="nba.menu_equipo" action="nba.equipo_action_window"/>
+  
+
+
+    <!--Vista de jugador-->
+    <record model="ir.ui.view" id="nba.jugador_list_view">
+        <field name="name">nba.jugador.view.tree</field>
+        <field name="model">nba.jugador</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="nombre"/>
+                <field name="numero"/>
+                <field name="equipo_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- search -->
+    <record model="ir.ui.view" id="nba.jugador_search_view">
+        <field name="name">nba.jugador.view.search</field>
+        <field name="model">nba.jugador</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="nombre"/>
+                <field name="numero"/>
+                <field name="equipo_id"/>
+                <group>
+                    <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- form -->
+    <record model="ir.ui.view" id="nba.jugador_form_view">
+      <field name="name">nba.jugador.view.form</field>
+      <field name="model">nba.jugador</field>
+      <field name="arch" type="xml">
+        <form string="Información jugador">
+          <sheet>
+            <div class="oe_title">
+              <h2>
+                Codigo <field name="name" placeholder="Codigo jugador"/>
+              </h2>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="nombre" placeholder="nombre del jugador"/>
+                <field name="numero" placeholder="jumero dorsal"/>
+                <field name="equipo_id" placeholder="equipo en el que juega"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Definición de menús-->
+    <record model="ir.actions.act_window" id="nba.jugador_action_window">
+      <field name="name">jugadores</field>
+      <field name="res_model">nba.jugador</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="nba" id="nba.menu_root"/>
+    <menuitem name="jugadores" id="nba.menu_jugador" parent="nba.menu_root"/>
+    <menuitem name="List" id="nba.menu_jugador_list" parent="nba.menu_jugador" action="nba.jugador_action_window"/>
+
+    <!--Vista de partido-->
+    <record model="ir.ui.view" id="nba.partido_list_view">
+        <field name="name">nba.partido.view.tree</field>
+        <field name="model">nba.partido</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="equipoLocal_id"/>
+                <field name="equipoVisitante_id"/>
+                <field name="resultado"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- search -->
+    <record model="ir.ui.view" id="nba.partido_search_view">
+        <field name="name">nba.partido.view.search</field>
+        <field name="model">nba.partido</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="equipoLocal_id"/>
+                <field name="equipoVisitante_id"/>
+                <field name="resultado"/>
+                <group>
+                    <filter name="group_by_nombre" string="nombre" context="{'gropup_by':'nombre'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- form -->
+    <record model="ir.ui.view" id="nba.partido_form_view">
+      <field name="name">nba.partido.view.form</field>
+      <field name="model">nba.partido</field>
+      <field name="arch" type="xml">
+        <form string="Información partido">
+          <sheet>
+            <div class="oe_title">
+              <h2>
+                Codigo <field name="name" placeholder="Codigo partido"/>
+              </h2>
+            </div>
+            <group>
+              <group>
+                <separator string="Datos"/>
+                <field name="equipoLocal_id" placeholder="codigo del equipo local"/>
+                <field name="equipoVisitante_id" placeholder="codigo del equipo visitante"/>
+                <field name="resultado" placeholder="resultado del partido"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Definición de menús-->
+    <record model="ir.actions.act_window" id="nba.partido_action_window">
+      <field name="name">partidos</field>
+      <field name="res_model">nba.partido</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="nba" id="nba.menu_root"/>
+    <menuitem name="partidos" id="nba.menu_partido" parent="nba.menu_root"/>
+    <menuitem name="List" id="nba.menu_partido_list" parent="nba.menu_partido" action="nba.partido_action_window"/>
+  </data>
+</odoo>
